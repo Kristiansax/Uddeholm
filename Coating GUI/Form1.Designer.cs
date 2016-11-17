@@ -32,6 +32,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Calculate = new System.Windows.Forms.Button();
             this.DropDown = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Calculate
@@ -54,6 +55,13 @@
             this.DropDown.TabIndex = 1;
             this.DropDown.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1232, 914);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(397, 35);
+            this.textBox1.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -61,6 +69,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1832, 996);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.DropDown);
             this.Controls.Add(this.Calculate);
             this.DoubleBuffered = true;
@@ -68,6 +77,7 @@
             this.Name = "Form1";
             this.Text = "Coating";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -76,6 +86,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button Calculate;
         private System.Windows.Forms.ComboBox DropDown;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
