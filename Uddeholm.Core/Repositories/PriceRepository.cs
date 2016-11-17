@@ -17,7 +17,7 @@ namespace Uddeholm.Core.Repositories
 
         public void ReadPrices()
         {
-            IExcelDataReader excelReader = ReadExcel(@"F:\Uddeholm\Uddeholm.Test\bin\Debug\PVD.xlsx");
+            IExcelDataReader excelReader = ReadExcel(@"C:\Users\Fumse\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\PVD.xlsx");
 
             while (excelReader.Read())
             {

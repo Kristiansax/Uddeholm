@@ -70,7 +70,7 @@ namespace Coating_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            DropDown.Items.Add(" ");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -93,8 +93,8 @@ namespace Coating_GUI
             Bredde.Clear();
             Længde.Clear();
             Price.Clear();
-            DropDown.Items.Clear();
             Volume.Clear();
+            DropDown.SelectedIndex = 0;
         }
     }
 }
