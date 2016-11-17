@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Repositories\CoatingRepository.cs" />
     <Compile Include="Repositories\PriceRepository.cs" />
+    <Compile Include="Repositories\SteelRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

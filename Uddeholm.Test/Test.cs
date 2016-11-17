@@ -10,16 +10,16 @@ namespace Uddeholm.Test
     public class Test
     {
         CoatingRepository CoatingRepository = new CoatingRepository();
-        PriceRepository   PriceRepository   = new PriceRepository();
-        //SteelRepository   SteelRepository   = new SteelRepository();
+        PriceRepository PriceRepository = new PriceRepository();
+        SteelRepository SteelRepository = new SteelRepository();
 
         /* ========================== Testing files ========================== */
 
         [TestMethod]
         public void FilesExist()
         {
-            Assert.IsTrue(File.Exists(@"F:\Uddeholm\Uddeholm.Test\bin\Debug\factors.xlsx"));
-            Assert.IsTrue(File.Exists(@"F:\Uddeholm\Uddeholm.Test\bin\Debug\PVD.xlsx"));
+            Assert.IsTrue(File.Exists(@"C:\Users\Skole\Documents\Visual Studio 2015\Projects\Uddeholm\Uddeholm.Test\bin\Debug\factors.xlsx"));
+            Assert.IsTrue(File.Exists(@"C:\Users\Skole\Documents\Visual Studio 2015\Projects\Uddeholm\Uddeholm.Test\bin\Debug\PVD.xlsx"));
         }
 
         /* ========================= Testing coatings ======================== */
@@ -48,7 +48,7 @@ namespace Uddeholm.Test
                 Width = 20
             };
 
-            Assert.AreEqual(6.28, steel.GetVolume());
+            Assert.AreEqual(6.28, Math.Round(steel.GetVolume(), 2));
         }
 
         [TestMethod]
@@ -84,7 +84,36 @@ namespace Uddeholm.Test
         [TestMethod]
         public void CanCalculateTotalPrice()
         {
-            
+            Steel steel = new Steel()
+            {
+                IsRound = false,
+                Width = 20,
+                Height = 20,
+                Length = 20
+            };
+
+            Price price = PriceRepository.GetPrice(steel.GetVolume());
+
+            Coating coating = CoatingRepository.GetCoating("SISTRAL");
+
+            Assert.AreEqual(98.56, steel.GetPrice(coating, price));
+        }
+
+        [TestMethod]
+        public void CanCalculateRoundObject()
+        {
+            Steel steel = new Steel()
+            {
+                IsRound = true,
+                Width = 25,
+                Height = 40.03
+            };
+
+            Price price = PriceRepository.GetPrice(steel.GetVolume());
+
+            Coating coating = CoatingRepository.GetCoating("CROSAL Duplex");
+
+            Assert.AreEqual(326.59, steel.GetPrice(coating, price));
         }
     }
 }

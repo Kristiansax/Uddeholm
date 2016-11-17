@@ -1,4 +1,6 @@
 ﻿using System;
+using Uddeholm.Core.Entites;
+using Uddeholm.Core.Repositories;
 
 namespace Uddeholm.Core.Entites
 {
@@ -18,7 +20,15 @@ namespace Uddeholm.Core.Entites
             else
                 result = (Width * Length * Height) / 1000;
 
-            return Math.Round(result, 2);
+            return result;
+        }
+
+        public double GetPrice(Coating coating, Price price)
+        {
+            double subprice = price.PriceCM3 * GetVolume();
+            double newprice = subprice * coating.factor;
+
+            return Math.Round(newprice, 2);
         }
     }
 }

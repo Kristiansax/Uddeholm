@@ -13,14 +13,12 @@ namespace Uddeholm.Core.Repositories
 
         public SteelRepository()
         {
-
+            // Constructor
         }
 
         public void TakeSteel(Steel steel)
         {
             Steels.Add(steel);
         }
-
-
     }
 }
