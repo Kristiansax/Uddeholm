@@ -11,6 +11,7 @@ using Uddeholm.Core.Repositories;
 using Uddeholm.Core.Entites;
 using System.Runtime.Remoting.Contexts;
 
+
 namespace Coating_GUI
 {
     public partial class Form1 : Form
@@ -80,16 +81,30 @@ namespace Coating_GUI
 
         private void Calculate_Click(object sender, EventArgs e)
         {
-            Price price = PR.GetPrice(steel.GetVolume());
-            Coating coating = CR.GetCoating(DropDown.SelectedItem.ToString());
-            double totalprice = steel.GetPrice(coating, price);
+            try
+            {
+                Price price = PR.GetPrice(steel.GetVolume());
+                Coating coating = CR.GetCoating(DropDown.SelectedItem.ToString());
+                double totalprice = steel.GetPrice(coating, price);
 
-            this.Price.Text = totalprice.ToString();
+                string [] custom = custombox.Text.Split('+');
+                foreach (var item in custom)
+                {
+                    totalprice += Convert.ToInt32(item);
+                }
+
+                totalprice = Convert.ToDouble(numericUpDown1.Value) * totalprice;
+
+                this.Price.Text = Convert.ToString(totalprice);
+            }
+            catch { }
         }
 
         private void Reset_Click(object sender, EventArgs e)
         {
             Højde.Clear();
+            custombox.Text = "0";
+            numericUpDown1.Value = 1;
             Bredde.Clear();
             Længde.Clear();
             Price.Clear();
@@ -99,8 +114,17 @@ namespace Coating_GUI
 
         private void ClipButton_Click(object sender, EventArgs e)
         {
-           
             Clipboard.SetText(Price.Text);
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void custombox_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
