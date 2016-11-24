@@ -17,7 +17,7 @@ namespace Uddeholm.Core.Repositories
 
         public void ReadCoatings()
         {
-            IExcelDataReader excelReader = ReadExcel(@"C:\Users\Fumse\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\factors.xlsx");
+            IExcelDataReader excelReader = ReadExcel(@"C:\Users\Fumi\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\factors.xlsx");
 
             while (excelReader.Read())
             {

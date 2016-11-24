@@ -18,8 +18,8 @@ namespace Uddeholm.Test
         [TestMethod]
         public void FilesExist()
         {
-            Assert.IsTrue(File.Exists(@"C:\Users\Fumse\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\factors.xlsx"));
-            Assert.IsTrue(File.Exists(@"C:\Users\Fumse\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\PVD.xlsx"));
+            Assert.IsTrue(File.Exists(@"C:\Users\Fumi\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\factors.xlsx"));
+            Assert.IsTrue(File.Exists(@"C:\Users\Fumi\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\PVD.xlsx"));
         }
 
         /* ========================= Testing coatings ======================== */

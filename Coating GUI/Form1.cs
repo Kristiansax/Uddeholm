@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Uddeholm.Core.Repositories;
 using Uddeholm.Core.Entites;
-
+using System.Runtime.Remoting.Contexts;
 
 namespace Coating_GUI
 {
@@ -95,6 +95,12 @@ namespace Coating_GUI
             Price.Clear();
             Volume.Clear();
             DropDown.SelectedIndex = 0;
+        }
+
+        private void ClipButton_Click(object sender, EventArgs e)
+        {
+           
+            Clipboard.SetText(Price.Text);
         }
     }
 }
