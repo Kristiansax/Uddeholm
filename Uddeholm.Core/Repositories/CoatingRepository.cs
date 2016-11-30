@@ -17,7 +17,8 @@ namespace Uddeholm.Core.Repositories
 
         public void ReadCoatings()
         {
-            IExcelDataReader excelReader = ReadExcel(@"C:\Users\Kristiansax\Documents\GitHub\Uddeholm\Uddeholm.Test\bin\debug\factors.xlsx");
+            string startupPath = Environment.CurrentDirectory;
+            IExcelDataReader excelReader = ReadExcel(startupPath+@"\factors.xlsx");
             excelReader.IsFirstRowAsColumnNames = true;
             excelReader.Read();
             while (excelReader.Read())

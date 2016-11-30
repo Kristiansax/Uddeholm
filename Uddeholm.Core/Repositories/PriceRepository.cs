@@ -17,7 +17,8 @@ namespace Uddeholm.Core.Repositories
 
         public void ReadPrices()
         {
-            IExcelDataReader excelReader = ReadExcel(@"C:\Users\Kristiansax\Documents\GitHub\Uddeholm\Uddeholm.Test\bin\debug\PVD.xlsx");
+            string startupPath = Environment.CurrentDirectory;
+            IExcelDataReader excelReader = ReadExcel(@startupPath+@"\PVD.xlsx");
 
             excelReader.IsFirstRowAsColumnNames = true;
             excelReader.Read();
