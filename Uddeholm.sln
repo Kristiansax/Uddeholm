@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uddeholm.Core", "Uddeholm.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uddeholm.Test", "Uddeholm.Test\Uddeholm.Test.csproj", "{3DC02934-CF9A-491D-8436-9CA663213577}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coating GUI", "Coating GUI\Coating GUI.csproj", "{43007483-45DF-43A7-B643-62776F1ABC12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coating.GUI", "Coating GUI\Coating.GUI.csproj", "{43007483-45DF-43A7-B643-62776F1ABC12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
