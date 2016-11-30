@@ -46,7 +46,7 @@ namespace Uddeholm.Test
             {
                 IsRound = true,
                 Height = 20,
-                Width = 20
+                Length = 20
             };
 
             Assert.AreEqual(6.28, Math.Round(steel.GetVolume(), 2));

@@ -49,7 +49,7 @@ namespace Coating_GUI
         {
             try
             {
-                steel.Width = Convert.ToDouble(Højde.Text);
+                steel.Width = Convert.ToDouble(Bredde.Text);
             }
             catch { }
             
@@ -59,7 +59,7 @@ namespace Coating_GUI
         {
             try
             {
-                steel.Length = Convert.ToDouble(Højde.Text);
+                steel.Length = Convert.ToDouble(Længde.Text);
             }
             catch { }
         }
@@ -76,7 +76,12 @@ namespace Coating_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Volume.Text = steel.GetVolume().ToString();
+            if (Højde.Text == "")
+                steel.IsRound = true;
+            else
+                steel.IsRound = false;
+
+            Volume.Text = Math.Round(steel.GetVolume(), 2).ToString();
         }
 
         private void Calculate_Click(object sender, EventArgs e)
@@ -125,6 +130,11 @@ namespace Coating_GUI
         private void custombox_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

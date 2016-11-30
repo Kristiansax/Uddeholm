@@ -16,11 +16,11 @@ namespace Uddeholm.Core.Entites
             double result;
 
             if (IsRound)
-                result = ((Height * Math.PI) * ((Width / 2) * (Width / 2)) / 1000);
+                result = ((Length * Math.PI) * ((Width / 2) * (Width / 2)) / 1000);
             else
                 result = (Width * Length * Height) / 1000;
 
-            return result;
+                return result;
         }
 
         public double GetPrice(Coating coating, Price price)
