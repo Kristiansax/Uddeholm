@@ -37,7 +37,7 @@ namespace Coating_GUI
         {
             try
             {
-                steel.Height = Convert.ToDouble(Højde.Text);
+                steel.Height = Convert.ToDouble(Height.Text);
             }
             catch
             {
@@ -49,7 +49,7 @@ namespace Coating_GUI
         {
             try
             {
-                steel.Width = Convert.ToDouble(Bredde.Text);
+                steel.Width = Convert.ToDouble(Width.Text);
             }
             catch { }
             
@@ -59,7 +59,7 @@ namespace Coating_GUI
         {
             try
             {
-                steel.Length = Convert.ToDouble(Længde.Text);
+                steel.Length = Convert.ToDouble(Length.Text);
             }
             catch { }
         }
@@ -74,9 +74,9 @@ namespace Coating_GUI
             DropDown.Items.Add(" ");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Calculate_Volume_Click(object sender, EventArgs e)
         {
-            if (Højde.Text == "")
+            if (Height.Text == "")
                 steel.IsRound = true;
             else
                 steel.IsRound = false;
@@ -98,7 +98,7 @@ namespace Coating_GUI
                     totalprice += Convert.ToInt32(item);
                 }
 
-                totalprice = Convert.ToDouble(numericUpDown1.Value) * totalprice;
+                totalprice = Convert.ToDouble(TotalAmount.Value) * totalprice;
 
                 this.Price.Text = Convert.ToString(totalprice);
             }
@@ -107,11 +107,11 @@ namespace Coating_GUI
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            Højde.Clear();
+            Height.Clear();
             custombox.Text = "0";
-            numericUpDown1.Value = 1;
-            Bredde.Clear();
-            Længde.Clear();
+            TotalAmount.Value = 1;
+            Width.Clear();
+            Length.Clear();
             Price.Clear();
             Volume.Clear();
             DropDown.SelectedIndex = 0;
@@ -129,10 +129,15 @@ namespace Coating_GUI
 
         private void custombox_TextChanged(object sender, EventArgs e)
         {
-            
+            Price.Text = "Custom box blev ændret";
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
