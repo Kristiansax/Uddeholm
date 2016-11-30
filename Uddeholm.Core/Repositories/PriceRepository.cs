@@ -17,8 +17,10 @@ namespace Uddeholm.Core.Repositories
 
         public void ReadPrices()
         {
-            IExcelDataReader excelReader = ReadExcel(@"C:\Users\Fumi\Source\Repos\Uddeholm4\Uddeholm.Test\bin\Debug\PVD.xlsx");
+            IExcelDataReader excelReader = ReadExcel(@"C:\Users\Kristiansax\Documents\GitHub\Uddeholm\Uddeholm.Test\bin\debug\PVD.xlsx");
 
+            excelReader.IsFirstRowAsColumnNames = true;
+            excelReader.Read();
             while (excelReader.Read())
             {
                 Price price = new Price();
