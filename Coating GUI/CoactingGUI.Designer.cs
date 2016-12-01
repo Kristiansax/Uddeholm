@@ -1,6 +1,6 @@
 ﻿namespace Coating_GUI
 {
-    partial class Form1
+    partial class CoactingGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoactingGUI));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.DropDown = new System.Windows.Forms.ComboBox();
             this.Height = new System.Windows.Forms.TextBox();
@@ -59,17 +59,17 @@
             this.DropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DropDown.FormattingEnabled = true;
             this.DropDown.Location = new System.Drawing.Point(28, 183);
-            this.DropDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DropDown.Margin = new System.Windows.Forms.Padding(2);
             this.DropDown.Name = "DropDown";
             this.DropDown.Size = new System.Drawing.Size(508, 37);
             this.DropDown.Sorted = true;
-            this.DropDown.TabIndex = 1;
+            this.DropDown.TabIndex = 6;
             this.DropDown.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Height
             // 
             this.Height.Location = new System.Drawing.Point(278, 11);
-            this.Height.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Height.Margin = new System.Windows.Forms.Padding(2);
             this.Height.Name = "Height";
             this.Height.Size = new System.Drawing.Size(100, 35);
             this.Height.TabIndex = 3;
@@ -78,19 +78,19 @@
             // Length
             // 
             this.Length.Location = new System.Drawing.Point(150, 11);
-            this.Length.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Length.Margin = new System.Windows.Forms.Padding(2);
             this.Length.Name = "Length";
             this.Length.Size = new System.Drawing.Size(100, 35);
-            this.Length.TabIndex = 4;
+            this.Length.TabIndex = 2;
             this.Length.TextChanged += new System.EventHandler(this.Længde_TextChanged);
             // 
             // Width
             // 
             this.Width.Location = new System.Drawing.Point(28, 11);
-            this.Width.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Width.Margin = new System.Windows.Forms.Padding(2);
             this.Width.Name = "Width";
             this.Width.Size = new System.Drawing.Size(100, 35);
-            this.Width.TabIndex = 5;
+            this.Width.TabIndex = 1;
             this.Width.TextChanged += new System.EventHandler(this.Bredde_TextChanged);
             // 
             // label1
@@ -127,20 +127,20 @@
             // Volume
             // 
             this.Volume.Location = new System.Drawing.Point(436, 11);
-            this.Volume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Volume.Margin = new System.Windows.Forms.Padding(2);
             this.Volume.Name = "Volume";
             this.Volume.ReadOnly = true;
             this.Volume.Size = new System.Drawing.Size(100, 35);
-            this.Volume.TabIndex = 9;
+            this.Volume.TabIndex = 4;
             this.Volume.TextChanged += new System.EventHandler(this.Volume_TextChanged);
             // 
             // Calculate_Volume
             // 
             this.Calculate_Volume.Location = new System.Drawing.Point(546, 11);
-            this.Calculate_Volume.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Calculate_Volume.Margin = new System.Windows.Forms.Padding(2);
             this.Calculate_Volume.Name = "Calculate_Volume";
             this.Calculate_Volume.Size = new System.Drawing.Size(217, 47);
-            this.Calculate_Volume.TabIndex = 11;
+            this.Calculate_Volume.TabIndex = 5;
             this.Calculate_Volume.Text = "Beregn Volume";
             this.Calculate_Volume.UseVisualStyleBackColor = true;
             this.Calculate_Volume.Click += new System.EventHandler(this.Calculate_Volume_Click);
@@ -148,7 +148,7 @@
             // Price
             // 
             this.Price.Location = new System.Drawing.Point(1052, 678);
-            this.Price.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Price.Margin = new System.Windows.Forms.Padding(2);
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
             this.Price.Size = new System.Drawing.Size(176, 35);
@@ -157,10 +157,10 @@
             // Calculate
             // 
             this.Calculate.Location = new System.Drawing.Point(882, 674);
-            this.Calculate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Calculate.Margin = new System.Windows.Forms.Padding(2);
             this.Calculate.Name = "Calculate";
             this.Calculate.Size = new System.Drawing.Size(166, 54);
-            this.Calculate.TabIndex = 13;
+            this.Calculate.TabIndex = 10;
             this.Calculate.Text = "Beregn Pris";
             this.Calculate.UseVisualStyleBackColor = true;
             this.Calculate.Click += new System.EventHandler(this.Calculate_Click);
@@ -168,7 +168,7 @@
             // Reset
             // 
             this.Reset.Location = new System.Drawing.Point(47, 678);
-            this.Reset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Reset.Margin = new System.Windows.Forms.Padding(2);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(166, 54);
             this.Reset.TabIndex = 14;
@@ -180,10 +180,10 @@
             // 
             this.ClipButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClipButton.Location = new System.Drawing.Point(1232, 674);
-            this.ClipButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClipButton.Margin = new System.Windows.Forms.Padding(4);
             this.ClipButton.Name = "ClipButton";
             this.ClipButton.Size = new System.Drawing.Size(128, 54);
-            this.ClipButton.TabIndex = 15;
+            this.ClipButton.TabIndex = 11;
             this.ClipButton.Text = "Kopier";
             this.ClipButton.UseVisualStyleBackColor = true;
             this.ClipButton.Click += new System.EventHandler(this.ClipButton_Click);
@@ -191,17 +191,17 @@
             // custombox
             // 
             this.custombox.Location = new System.Drawing.Point(882, 183);
-            this.custombox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.custombox.Margin = new System.Windows.Forms.Padding(4);
             this.custombox.Name = "custombox";
             this.custombox.Size = new System.Drawing.Size(476, 35);
-            this.custombox.TabIndex = 18;
+            this.custombox.TabIndex = 9;
             this.custombox.Text = "0";
             this.custombox.TextChanged += new System.EventHandler(this.custombox_TextChanged);
             // 
             // TotalAmount
             // 
             this.TotalAmount.Location = new System.Drawing.Point(840, 14);
-            this.TotalAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TotalAmount.Margin = new System.Windows.Forms.Padding(4);
             this.TotalAmount.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -243,7 +243,7 @@
             this.Vådstråling.Location = new System.Drawing.Point(28, 287);
             this.Vådstråling.Name = "Vådstråling";
             this.Vådstråling.Size = new System.Drawing.Size(165, 33);
-            this.Vådstråling.TabIndex = 22;
+            this.Vådstråling.TabIndex = 7;
             this.Vådstråling.Text = "Vådstråling";
             this.Vådstråling.UseVisualStyleBackColor = true;
             this.Vådstråling.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -254,7 +254,7 @@
             this.Tørstråling.Location = new System.Drawing.Point(28, 326);
             this.Tørstråling.Name = "Tørstråling";
             this.Tørstråling.Size = new System.Drawing.Size(161, 33);
-            this.Tørstråling.TabIndex = 23;
+            this.Tørstråling.TabIndex = 8;
             this.Tørstråling.Text = "Tørstråling";
             this.Tørstråling.UseVisualStyleBackColor = true;
             // 
@@ -276,7 +276,7 @@
             0,
             0});
             // 
-            // Form1
+            // CoactingGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -304,8 +304,8 @@
             this.Controls.Add(this.DropDown);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "CoactingGUI";
             this.Text = "Coating Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TotalAmount)).EndInit();

@@ -45,7 +45,7 @@ namespace Uddeholm.Test
             Steel steel = new Steel()
             {
                 IsRound = true,
-                Height = 20,
+                Width = 20,
                 Length = 20
             };
 
@@ -107,7 +107,7 @@ namespace Uddeholm.Test
             {
                 IsRound = true,
                 Width = 25,
-                Height = 40.03
+                Length = 40.03
             };
 
             Price price = PriceRepository.GetPrice(steel.GetVolume());

@@ -14,12 +14,12 @@ using System.Runtime.Remoting.Contexts;
 
 namespace Coating_GUI
 {
-    public partial class Form1 : Form
+    public partial class CoactingGUI : Form
     {
         public Steel steel = new Steel();
         public PriceRepository PR = new PriceRepository();
         public CoatingRepository CR = new CoatingRepository();
-        public Form1()
+        public CoactingGUI()
         {
             InitializeComponent();
             foreach (Coating c in CR.GetAllCoatings())
@@ -115,6 +115,10 @@ namespace Coating_GUI
             Price.Clear();
             Volume.Clear();
             DropDown.SelectedIndex = 0;
+            Vådstråling.Checked = false;
+            Tørstråling.Checked = false;
+            StrålingAmount.Value = 1;
+            TotalAmount.Value = 1;
         }
 
         private void ClipButton_Click(object sender, EventArgs e)
