@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entites\Coating.cs" />
+    <Compile Include="Entites\DryTreatment.cs" />
     <Compile Include="Entites\Price.cs" />
     <Compile Include="Entites\Steel.cs" />
     <Compile Include="ExcelReader.cs" />
@@ -79,6 +80,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Repositories\CoatingRepository.cs" />
+    <Compile Include="Repositories\DryTreatmentRepository.cs" />
     <Compile Include="Repositories\PriceRepository.cs" />
     <Compile Include="Repositories\SteelRepository.cs" />
   </ItemGroup>
