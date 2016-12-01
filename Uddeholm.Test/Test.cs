@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Uddeholm.Core.Entites;
@@ -11,10 +9,11 @@ namespace Uddeholm.Test
     [TestClass]
     public class Test
     {
-        CoatingRepository CoatingRepository = new CoatingRepository();
-        PriceRepository PriceRepository = new PriceRepository();
-        SteelRepository SteelRepository = new SteelRepository();
-        DryTreatmentRepository DryTreatmentRepository = new DryTreatmentRepository();
+        CoatingRepository        CoatingRepository        = new CoatingRepository();
+        PriceRepository          PriceRepository          = new PriceRepository();
+        SteelRepository          SteelRepository          = new SteelRepository();
+        DryTreatmentRepository   DryTreatmentRepository   = new DryTreatmentRepository();
+        WaterTreatmentRepository WaterTreatmentRepository = new WaterTreatmentRepository();
 
         /* ========================== Testing files ========================== */
 
@@ -50,7 +49,8 @@ namespace Uddeholm.Test
             {
                 IsRound = true,
                 Width = 20,
-                Length = 20
+                Length = 20,
+                Quantity = 1
             };
 
             Assert.AreEqual(6.28, Math.Round(steel.GetVolume(), 2));
@@ -64,7 +64,8 @@ namespace Uddeholm.Test
                 IsRound = false,
                 Height = 20,
                 Width = 20,
-                Length = 20
+                Length = 20,
+                Quantity = 1
             };
 
             Assert.AreEqual(8, steel.GetVolume());
@@ -94,7 +95,8 @@ namespace Uddeholm.Test
                 IsRound = false,
                 Width = 20,
                 Height = 20,
-                Length = 20
+                Length = 20,
+                Quantity = 1
             };
 
             Price price = PriceRepository.GetPrice(steel.GetVolume());
@@ -111,7 +113,8 @@ namespace Uddeholm.Test
             {
                 IsRound = true,
                 Width = 25,
-                Length = 40.03
+                Length = 40.03,
+                Quantity = 1
             };
 
             Price price = PriceRepository.GetPrice(steel.GetVolume());
@@ -149,6 +152,101 @@ namespace Uddeholm.Test
             };
 
             Assert.AreEqual(142.07, Math.Round(DryTreatmentRepository.GetDryTreatment(steel2).QuantityHigh, 2));
+        }
+
+        /* ================================ Vådstrling ================================ */
+
+        [TestMethod]
+        public void CanReadFromExcelWet()
+        {
+            Assert.AreEqual(27, WaterTreatmentRepository.GetAllWaterTreatments().Count);
+        }
+
+        [TestMethod]
+        public void CanGetDifferentQuantitiesFromWet()
+        {
+            Steel steel = new Steel()
+            {
+                IsRound = false,
+                Width = 83,
+                Height = 83,
+                Length = 83,
+                Quantity = 4
+            };
+
+            Assert.AreEqual(106.48, Math.Round(WaterTreatmentRepository.GetWaterTreatment(steel).QuantityMid, 2));
+        }
+
+        [TestMethod]
+        public void CanGetWaterTreatmentFromRoundSteel()
+        {
+            Steel steel2 = new Steel()
+            {
+                IsRound = true,
+                Width = 180,
+                Length = 173,
+                Quantity = 20
+            };
+
+            Assert.AreEqual(186.75, Math.Round(WaterTreatmentRepository.GetWaterTreatment(steel2).QuantityHigh, 2));
+        }
+
+        [TestMethod]
+        public void CanCalculateWithOnlyWaterTreatment()
+        {
+            Steel steel = new Steel()
+            {
+                IsRound = false,
+                Width = 20,
+                Height = 20,
+                Length = 20,
+                Quantity = 4
+            };
+
+            Price price = PriceRepository.GetPrice(steel.GetVolume());
+            Coating coating = CoatingRepository.GetCoating("SISTRAL");
+            WaterTreatment wt = WaterTreatmentRepository.GetWaterTreatment(steel);
+
+            Assert.AreEqual(620.06, steel.GetPrice(coating, price, wt));
+        }
+
+        [TestMethod]
+        public void CanCalculateWithOnlyDryTreatment()
+        {
+            Steel steel = new Steel()
+            {
+                IsRound = true,
+                Width = 233,
+                Length = 233,
+                Quantity = 20
+            };
+
+            Price price = PriceRepository.GetPrice(steel.GetVolume());
+            Coating coating = CoatingRepository.GetCoating("SISTRAL");
+            DryTreatment dt = DryTreatmentRepository.GetDryTreatment(steel);
+
+            Assert.AreEqual(173676.32, steel.GetPrice(coating, price, dt));
+        }
+
+        [TestMethod]
+        public void CanCalculateBothTreatments()
+        {
+            Steel steel = new Steel()
+            {
+                IsRound = false,
+                Width = 150,
+                Length = 150,
+                Height = 150,
+                Quantity = 1
+            };
+
+            Price price = PriceRepository.GetPrice(steel.GetVolume());
+            Coating coating = CoatingRepository.GetCoating("SISTRAL");
+
+            DryTreatment dt = DryTreatmentRepository.GetDryTreatment(steel);
+            WaterTreatment wt = WaterTreatmentRepository.GetWaterTreatment(steel);
+
+            Assert.AreEqual(4421.43, steel.GetPrice(coating, price, wt, dt));
         }
     }
 }

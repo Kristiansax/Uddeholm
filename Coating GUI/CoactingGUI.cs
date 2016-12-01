@@ -16,9 +16,12 @@ namespace Coating_GUI
 {
     public partial class CoactingGUI : Form
     {
-        public Steel steel = new Steel();
-        public PriceRepository PR = new PriceRepository();
-        public CoatingRepository CR = new CoatingRepository();
+        public Steel                    steel = new Steel();
+        public PriceRepository          PR    = new PriceRepository();
+        public CoatingRepository        CR    = new CoatingRepository();
+        public WaterTreatmentRepository WTR   = new WaterTreatmentRepository();
+        public DryTreatmentRepository   DTR   = new DryTreatmentRepository();
+
         public CoactingGUI()
         {
             InitializeComponent();
@@ -72,6 +75,7 @@ namespace Coating_GUI
         private void Form1_Load(object sender, EventArgs e)
         {
             DropDown.Items.Add(" ");
+            steel.Quantity = 1;
         }
 
         private void Calculate_Volume_Click(object sender, EventArgs e)
@@ -90,15 +94,26 @@ namespace Coating_GUI
             {
                 Price price = PR.GetPrice(steel.GetVolume());
                 Coating coating = CR.GetCoating(DropDown.SelectedItem.ToString());
-                double totalprice = steel.GetPrice(coating, price);
 
-                string [] custom = custombox.Text.Split('+');
+                double totalprice = 0;
+
+                if (Vådstråling.Checked && !Tørstråling.Checked)
+                    totalprice = steel.GetPrice(coating, price, WTR.GetWaterTreatment(steel));
+
+                else if (!Vådstråling.Checked && Tørstråling.Checked)
+                    totalprice = steel.GetPrice(coating, price, DTR.GetDryTreatment(steel));
+
+                else if (Vådstråling.Checked && Tørstråling.Checked)
+                    totalprice = steel.GetPrice(coating, price, WTR.GetWaterTreatment(steel), DTR.GetDryTreatment(steel));
+
+                else
+                    totalprice = steel.GetPrice(coating, price);
+
+                string[] custom = custombox.Text.Split('+');
                 foreach (var item in custom)
                 {
                     totalprice += Convert.ToInt32(item);
                 }
-
-                totalprice = Convert.ToDouble(TotalAmount.Value) * totalprice;
 
                 this.Price.Text = Convert.ToString(totalprice);
             }
@@ -109,7 +124,6 @@ namespace Coating_GUI
         {
             Height.Clear();
             custombox.Text = "0";
-            TotalAmount.Value = 1;
             Width.Clear();
             Length.Clear();
             Price.Clear();
@@ -118,7 +132,6 @@ namespace Coating_GUI
             Vådstråling.Checked = false;
             Tørstråling.Checked = false;
             StrålingAmount.Value = 1;
-            TotalAmount.Value = 1;
         }
 
         private void ClipButton_Click(object sender, EventArgs e)
@@ -144,6 +157,11 @@ namespace Coating_GUI
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void StrålingAmount_ValueChanged(object sender, EventArgs e)
+        {
+            steel.Quantity = Convert.ToInt32( StrålingAmount.Value );
         }
     }
 }
