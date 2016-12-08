@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Uddeholm.Core.Entites;
 using Uddeholm.Core.Repositories;
 
@@ -11,6 +12,21 @@ namespace Uddeholm.Core.Entites
         public double Length { get; set; }
         public double Height { get; set; }
         public int Quantity { get; set; }
+        public PriceRepository PR { get; set; }
+        public double BasePrice
+        {
+            get
+            {
+                return PR.GetPrice(GetVolume()).PriceCM3 * GetVolume();
+            }
+        }
+
+        public Steel(PriceRepository pr)
+        {
+            PR = pr;
+        }
+
+        public Steel() { }
 
         public double GetVolume()
         {
@@ -24,44 +40,42 @@ namespace Uddeholm.Core.Entites
                 return result;
         }
 
-        public double GetPrice(Coating coating, Price price)
+        public double GetFinalPrice(List<Coating> c, WaterTreatment wt, DryTreatment dt, List<ToolType> tt)
         {
-            double subprice = price.PriceCM3 * GetVolume();
-            double newprice = (subprice * coating.factor) * Quantity;
+            bool IsCrosalChosen = false;
 
-            return Math.Round(newprice, 2);
+            // Price
+            double price = 0;
+
+            // Coatings
+            foreach (Coating coating in c)
+            {
+                price += ((BasePrice * coating.factor) * Quantity);
+
+                if (coating.name.Contains("CROSAL"))
+                    IsCrosalChosen = true;
+            }
+
+            // Drytreatment
+            if (dt.ToVolume != 0)
+                price += GetDryTreatmentPrice(dt);
+
+            // Watertreatment
+            if (wt.ToVolume != 0)
+            {
+                if (!IsCrosalChosen)
+                    price += GetWaterTreatmentPrice(wt);
+            }
+
+            // Tooltypes
+            foreach (ToolType tooltype in tt)
+                price += ((BasePrice * tooltype.AddFactor) * Quantity);
+
+            // Return final price
+            return Math.Round(price, 2);
         }
 
-        // Only watertreatment
-        public double GetPrice(Coating coating, Price price, WaterTreatment wt)
-        {
-            double subprice = price.PriceCM3 * GetVolume();
-            double newprice = (subprice * coating.factor) * Quantity;
-            newprice += GetWaterTreatmentPrice(wt);
-
-            return Math.Round(newprice, 2);
-        }
-
-        // Only drytreatment
-        public double GetPrice(Coating coating, Price price, DryTreatment dt)
-        {
-            double subprice = price.PriceCM3 * GetVolume();
-            double newprice = (subprice * coating.factor) * Quantity;
-            newprice += GetDryTreatmentPrice(dt);
-
-            return Math.Round(newprice, 2);
-        }
-
-        // Both treatments
-        public double GetPrice(Coating coating, Price price, WaterTreatment wt, DryTreatment dt)
-        {
-            double subprice = price.PriceCM3 * GetVolume();
-            double newprice = (subprice * coating.factor) * Quantity;
-            newprice += GetDryTreatmentPrice(dt);
-            newprice += GetWaterTreatmentPrice(wt);
-
-            return Math.Round(newprice, 2);
-        }
+        /* ========================================================== */
 
         private double GetWaterTreatmentPrice(WaterTreatment wt)
         {

@@ -16,24 +16,53 @@ namespace Coating_GUI
 {
     public partial class CoactingGUI : Form
     {
-        public Steel                    steel = new Steel();
         public PriceRepository          PR    = new PriceRepository();
         public CoatingRepository        CR    = new CoatingRepository();
         public WaterTreatmentRepository WTR   = new WaterTreatmentRepository();
         public DryTreatmentRepository   DTR   = new DryTreatmentRepository();
+        public ToolTypeRepository TTR = new ToolTypeRepository();
+        public Steel                    steel;
+
+        // Empty values
+        List<Coating> coatings;
+        List<ToolType> tooltypes;
+        DryTreatment drytreatment;
+        WaterTreatment watertreatment;
+
 
         public CoactingGUI()
         {
             InitializeComponent();
+
             foreach (Coating c in CR.GetAllCoatings())
             {
-                DropDown.Items.Add(c.name);
+                dropdown1.Items.Add(c.name);
+                dropdown2.Items.Add(c.name);
+                dropdown3.Items.Add(c.name);
+                dropdown4.Items.Add(c.name);
+                dropdown5.Items.Add(c.name);
             }
+
+            tooltypes1.Items.Add(" ");
+            foreach (ToolType tt in TTR.GetAllToolTypes())
+            {
+                tooltypes1.Items.Add(tt.Name);
+            }
+
+            steel = new Steel(PR);
+        }
+
+        public void InitializeEntities()
+        {
+            coatings = new List<Coating>();
+            tooltypes = new List<ToolType>();
+            drytreatment = new DryTreatment();
+            watertreatment = new WaterTreatment();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            dropdown2.Visible = true;
         }
 
         private void Højde_TextChanged(object sender, EventArgs e)
@@ -74,7 +103,11 @@ namespace Coating_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DropDown.Items.Add(" ");
+            dropdown1.Items.Add(" ");
+            dropdown2.Items.Add(" ");
+            dropdown3.Items.Add(" ");
+            dropdown4.Items.Add(" ");
+            dropdown5.Items.Add(" ");
             steel.Quantity = 1;
         }
 
@@ -90,24 +123,35 @@ namespace Coating_GUI
 
         private void Calculate_Click(object sender, EventArgs e)
         {
+            InitializeEntities();
+
             try
             {
-                Price price = PR.GetPrice(steel.GetVolume());
-                Coating coating = CR.GetCoating(DropDown.SelectedItem.ToString());
+                // Coating
+                if (dropdown1.SelectedItem != null)
+                    coatings.Add(CR.GetCoating(dropdown1.SelectedItem.ToString()));
+                if (dropdown2.SelectedItem != null)
+                    coatings.Add(CR.GetCoating(dropdown2.SelectedItem.ToString()));
+                if (dropdown3.SelectedItem != null)
+                    coatings.Add(CR.GetCoating(dropdown3.SelectedItem.ToString()));
+                if (dropdown4.SelectedItem != null)
+                    coatings.Add(CR.GetCoating(dropdown4.SelectedItem.ToString()));
+                if (dropdown5.SelectedItem != null)
+                    coatings.Add(CR.GetCoating(dropdown5.SelectedItem.ToString()));
+
+                // Stråling
+                if (Vådstråling.Checked)
+                    watertreatment = WTR.GetWaterTreatment(steel);
+                if (Tørstråling.Checked)
+                    drytreatment   = DTR.GetDryTreatment(steel);
+
+                // Tool types
+                if (tooltypes1.SelectedItem != null)
+                    tooltypes.Add(TTR.GetToolType(tooltypes1.SelectedItem.ToString()));
 
                 double totalprice = 0;
 
-                if (Vådstråling.Checked && !Tørstråling.Checked)
-                    totalprice = steel.GetPrice(coating, price, WTR.GetWaterTreatment(steel));
-
-                else if (!Vådstråling.Checked && Tørstråling.Checked)
-                    totalprice = steel.GetPrice(coating, price, DTR.GetDryTreatment(steel));
-
-                else if (Vådstråling.Checked && Tørstråling.Checked)
-                    totalprice = steel.GetPrice(coating, price, WTR.GetWaterTreatment(steel), DTR.GetDryTreatment(steel));
-
-                else
-                    totalprice = steel.GetPrice(coating, price);
+                totalprice = steel.GetFinalPrice(coatings, watertreatment, drytreatment, tooltypes);
 
                 string[] custom = custombox.Text.Split('+');
                 foreach (var item in custom)
@@ -116,9 +160,13 @@ namespace Coating_GUI
                 }
 
                 this.Price.Text = Convert.ToString(totalprice);
+
+
             }
             catch { }
         }
+
+
 
         private void Reset_Click(object sender, EventArgs e)
         {
@@ -128,10 +176,21 @@ namespace Coating_GUI
             Length.Clear();
             Price.Clear();
             Volume.Clear();
-            DropDown.SelectedIndex = 0;
+            dropdown1.SelectedIndex = 0;
+            dropdown2.SelectedIndex = 0;
+            dropdown3.SelectedIndex = 0;
+            dropdown4.SelectedIndex = 0;
+            dropdown5.SelectedIndex = 0;
+
+            dropdown2.Visible = false;
+            dropdown3.Visible = false;
+            dropdown4.Visible = false;
+            dropdown5.Visible = false;
+
             Vådstråling.Checked = false;
             Tørstråling.Checked = false;
             StrålingAmount.Value = 1;
+
         }
 
         private void ClipButton_Click(object sender, EventArgs e)
@@ -146,7 +205,7 @@ namespace Coating_GUI
 
         private void custombox_TextChanged(object sender, EventArgs e)
         {
-            Price.Text = "Custom box blev ændret";
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -162,6 +221,26 @@ namespace Coating_GUI
         private void StrålingAmount_ValueChanged(object sender, EventArgs e)
         {
             steel.Quantity = Convert.ToInt32( StrålingAmount.Value );
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            dropdown3.Visible = true;
+        }
+
+        private void dropdown3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dropdown4.Visible = true;
+        }
+
+        private void dropdown4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dropdown5.Visible = true;
+        }
+
+        private void comboBox1_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+
         }
     }
 }

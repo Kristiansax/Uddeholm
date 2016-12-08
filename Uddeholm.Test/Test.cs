@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Uddeholm.Core.Entites;
 using Uddeholm.Core.Repositories;
+using System.Collections.Generic;
 
 namespace Uddeholm.Test
 {
@@ -14,6 +15,13 @@ namespace Uddeholm.Test
         SteelRepository          SteelRepository          = new SteelRepository();
         DryTreatmentRepository   DryTreatmentRepository   = new DryTreatmentRepository();
         WaterTreatmentRepository WaterTreatmentRepository = new WaterTreatmentRepository();
+        ToolTypeRepository       ToolTypeRepository       = new ToolTypeRepository();
+
+        // Empty values
+        List<Coating>  coatings  = new List<Coating>();
+        List<ToolType> tooltypes = new List<ToolType>();
+        DryTreatment drytreatment = new DryTreatment();
+        WaterTreatment watertreatment = new WaterTreatment();
 
         /* ========================== Testing files ========================== */
 
@@ -24,6 +32,7 @@ namespace Uddeholm.Test
             Assert.IsTrue(File.Exists(startupPath + @"\factors.xlsx"));
             Assert.IsTrue(File.Exists(startupPath + @"\PVD.xlsx"));
             Assert.IsTrue(File.Exists(startupPath + @"\toerstraaling.xlsx"));
+            Assert.IsTrue(File.Exists(startupPath + @"\vaerktoejstyper.xlsx"));
         }
 
         /* ========================= Testing coatings ======================== */
@@ -83,45 +92,6 @@ namespace Uddeholm.Test
         public void GetGetCorrectPriceFromVolume()
         {
             Assert.AreEqual(3.71, PriceRepository.GetPrice(81).PriceCM3);
-        }
-
-        /* ======================= Testing Total Price ======================= */
-
-        [TestMethod]
-        public void CanCalculateTotalPrice()
-        {
-            Steel steel = new Steel()
-            {
-                IsRound = false,
-                Width = 20,
-                Height = 20,
-                Length = 20,
-                Quantity = 1
-            };
-
-            Price price = PriceRepository.GetPrice(steel.GetVolume());
-
-            Coating coating = CoatingRepository.GetCoating("SISTRAL");
-
-            Assert.AreEqual(98.56, steel.GetPrice(coating, price));
-        }
-
-        [TestMethod]
-        public void CanCalculateRoundObject()
-        {
-            Steel steel = new Steel()
-            {
-                IsRound = true,
-                Width = 25,
-                Length = 40.03,
-                Quantity = 1
-            };
-
-            Price price = PriceRepository.GetPrice(steel.GetVolume());
-
-            Coating coating = CoatingRepository.GetCoating("CROSAL Duplex");
-
-            Assert.AreEqual(326.59, steel.GetPrice(coating, price));
         }
 
         /* ================================ Tørstråling ================================ */
@@ -191,61 +161,69 @@ namespace Uddeholm.Test
             Assert.AreEqual(186.75, Math.Round(WaterTreatmentRepository.GetWaterTreatment(steel2).QuantityHigh, 2));
         }
 
+        /* ================================== Tools ==================================== */
+
         [TestMethod]
-        public void CanCalculateWithOnlyWaterTreatment()
+        public void CanAddToolTypesToRepository()
         {
-            Steel steel = new Steel()
-            {
-                IsRound = false,
-                Width = 20,
-                Height = 20,
-                Length = 20,
-                Quantity = 4
-            };
-
-            Price price = PriceRepository.GetPrice(steel.GetVolume());
-            Coating coating = CoatingRepository.GetCoating("SISTRAL");
-            WaterTreatment wt = WaterTreatmentRepository.GetWaterTreatment(steel);
-
-            Assert.AreEqual(620.06, steel.GetPrice(coating, price, wt));
+            Assert.IsTrue(ToolTypeRepository.GetAllToolTypes().Count > 0);
         }
 
         [TestMethod]
-        public void CanCalculateWithOnlyDryTreatment()
+        public void CanGetCorrectToolType()
         {
-            Steel steel = new Steel()
+            Assert.AreEqual(0.3, ToolTypeRepository.GetToolType("Ekstremt fine værktøj og sensible værktøj").AddFactor);
+        }
+
+        /* ================================== Final price ==================================== */
+        [TestMethod]
+        public void CanCalculateFinalPriceWithOnlyCoatings()
+        {
+            Steel steel = new Steel(PriceRepository)
             {
-                IsRound = true,
-                Width = 233,
-                Length = 233,
-                Quantity = 20
+                Width = 33,   Length = 20,   Height = 55,   IsRound = false,   Quantity = 1
             };
 
-            Price price = PriceRepository.GetPrice(steel.GetVolume());
-            Coating coating = CoatingRepository.GetCoating("SISTRAL");
-            DryTreatment dt = DryTreatmentRepository.GetDryTreatment(steel);
+            coatings.Add(CoatingRepository.GetCoating("CROSAL"));
+            coatings.Add(CoatingRepository.GetCoating("SISTRAL"));
 
-            Assert.AreEqual(173676.32, steel.GetPrice(coating, price, dt));
+            Assert.AreEqual(601.13, steel.GetFinalPrice(coatings, watertreatment, drytreatment, tooltypes));
         }
 
         [TestMethod]
-        public void CanCalculateBothTreatments()
+        public void CanCalculateFinalPriceWithMoreStuff()
         {
-            Steel steel = new Steel()
+            Steel steel = new Steel(PriceRepository)
             {
-                IsRound = false,
-                Width = 150,
-                Length = 150,
-                Height = 150,
-                Quantity = 1
+                Width = 33,   Length = 20,   IsRound = true,   Quantity = 6
             };
 
-            Price          price   = PriceRepository.GetPrice(steel.GetVolume());
-            Coating        coating = CoatingRepository.GetCoating("SISTRAL");
-            DryTreatment   dt      = DryTreatmentRepository.GetDryTreatment(steel);
-            WaterTreatment wt      = WaterTreatmentRepository.GetWaterTreatment(steel);
+            coatings.Add(CoatingRepository.GetCoating("SISTRAL"));
+            coatings.Add(CoatingRepository.GetCoating("CROSAL"));
 
-            Assert.AreEqual(4421.43, steel.GetPrice(coating, price, wt, dt));
+            tooltypes.Add(ToolTypeRepository.GetToolType("Plastværktøj, medicokomponenter"));
+
+            watertreatment = WaterTreatmentRepository.GetWaterTreatment(steel);
+
+            Assert.AreEqual(2655.71, steel.GetFinalPrice(coatings, watertreatment, drytreatment, tooltypes));
+        }
+
+        [TestMethod]
+        public void CanCalculateFinalPriceWithEvenMoreStuff()
+        {
+            Steel steel = new Steel(PriceRepository)
+            {
+                Width = 29,   Length = 61,   Height = 38,   IsRound = false,   Quantity = 23
+            };
+
+            coatings.Add(CoatingRepository.GetCoating("DUMATIC"));
+            coatings.Add(CoatingRepository.GetCoating("MoST"));
+
+            watertreatment = WaterTreatmentRepository.GetWaterTreatment(steel);
+
+            tooltypes.Add(ToolTypeRepository.GetToolType("Ekstremt fine værktøj og sensible værktøj"));
+
+            Assert.AreEqual(19564.67, steel.GetFinalPrice(coatings, watertreatment, drytreatment, tooltypes));
         }
     }
 }

@@ -72,6 +72,7 @@
     <Compile Include="Entites\DryTreatment.cs" />
     <Compile Include="Entites\Price.cs" />
     <Compile Include="Entites\Steel.cs" />
+    <Compile Include="Entites\ToolType.cs" />
     <Compile Include="Entites\WaterTreatment.cs" />
     <Compile Include="ExcelReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Repositories\DryTreatmentRepository.cs" />
     <Compile Include="Repositories\PriceRepository.cs" />
     <Compile Include="Repositories\SteelRepository.cs" />
+    <Compile Include="Repositories\ToolTypeRepository.cs" />
     <Compile Include="Repositories\WaterTreatmentRepository.cs" />
   </ItemGroup>
   <ItemGroup>

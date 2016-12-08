@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoactingGUI));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.DropDown = new System.Windows.Forms.ComboBox();
+            this.dropdown1 = new System.Windows.Forms.ComboBox();
             this.Height = new System.Windows.Forms.TextBox();
             this.Length = new System.Windows.Forms.TextBox();
             this.Width = new System.Windows.Forms.TextBox();
@@ -48,20 +48,25 @@
             this.Vådstråling = new System.Windows.Forms.CheckBox();
             this.Tørstråling = new System.Windows.Forms.CheckBox();
             this.StrålingAmount = new System.Windows.Forms.NumericUpDown();
+            this.dropdown2 = new System.Windows.Forms.ComboBox();
+            this.dropdown3 = new System.Windows.Forms.ComboBox();
+            this.dropdown4 = new System.Windows.Forms.ComboBox();
+            this.dropdown5 = new System.Windows.Forms.ComboBox();
+            this.tooltypes1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.StrålingAmount)).BeginInit();
             this.SuspendLayout();
             // 
-            // DropDown
+            // dropdown1
             // 
-            this.DropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DropDown.FormattingEnabled = true;
-            this.DropDown.Location = new System.Drawing.Point(45, 393);
-            this.DropDown.Margin = new System.Windows.Forms.Padding(1);
-            this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(292, 24);
-            this.DropDown.Sorted = true;
-            this.DropDown.TabIndex = 6;
-            this.DropDown.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.dropdown1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dropdown1.FormattingEnabled = true;
+            this.dropdown1.Location = new System.Drawing.Point(29, 212);
+            this.dropdown1.Margin = new System.Windows.Forms.Padding(1);
+            this.dropdown1.Name = "dropdown1";
+            this.dropdown1.Size = new System.Drawing.Size(292, 24);
+            this.dropdown1.Sorted = true;
+            this.dropdown1.TabIndex = 6;
+            this.dropdown1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Height
             // 
@@ -129,7 +134,7 @@
             // 
             // Volume
             // 
-            this.Volume.Location = new System.Drawing.Point(51, 328);
+            this.Volume.Location = new System.Drawing.Point(26, 159);
             this.Volume.Margin = new System.Windows.Forms.Padding(1);
             this.Volume.Name = "Volume";
             this.Volume.ReadOnly = true;
@@ -139,7 +144,7 @@
             // 
             // Calculate_Volume
             // 
-            this.Calculate_Volume.Location = new System.Drawing.Point(112, 326);
+            this.Calculate_Volume.Location = new System.Drawing.Point(87, 157);
             this.Calculate_Volume.Margin = new System.Windows.Forms.Padding(1);
             this.Calculate_Volume.Name = "Calculate_Volume";
             this.Calculate_Volume.Size = new System.Drawing.Size(124, 26);
@@ -193,7 +198,7 @@
             // 
             // custombox
             // 
-            this.custombox.Location = new System.Drawing.Point(539, 306);
+            this.custombox.Location = new System.Drawing.Point(540, 513);
             this.custombox.Margin = new System.Windows.Forms.Padding(2);
             this.custombox.Name = "custombox";
             this.custombox.Size = new System.Drawing.Size(274, 22);
@@ -204,7 +209,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(579, 288);
+            this.label4.Location = new System.Drawing.Point(580, 495);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(193, 17);
@@ -253,12 +258,80 @@
             0});
             this.StrålingAmount.ValueChanged += new System.EventHandler(this.StrålingAmount_ValueChanged);
             // 
+            // dropdown2
+            // 
+            this.dropdown2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dropdown2.FormattingEnabled = true;
+            this.dropdown2.Location = new System.Drawing.Point(29, 238);
+            this.dropdown2.Margin = new System.Windows.Forms.Padding(1);
+            this.dropdown2.Name = "dropdown2";
+            this.dropdown2.Size = new System.Drawing.Size(292, 24);
+            this.dropdown2.Sorted = true;
+            this.dropdown2.TabIndex = 25;
+            this.dropdown2.Visible = false;
+            this.dropdown2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            // 
+            // dropdown3
+            // 
+            this.dropdown3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dropdown3.FormattingEnabled = true;
+            this.dropdown3.Location = new System.Drawing.Point(29, 264);
+            this.dropdown3.Margin = new System.Windows.Forms.Padding(1);
+            this.dropdown3.Name = "dropdown3";
+            this.dropdown3.Size = new System.Drawing.Size(292, 24);
+            this.dropdown3.Sorted = true;
+            this.dropdown3.TabIndex = 26;
+            this.dropdown3.Visible = false;
+            this.dropdown3.SelectedIndexChanged += new System.EventHandler(this.dropdown3_SelectedIndexChanged);
+            // 
+            // dropdown4
+            // 
+            this.dropdown4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dropdown4.FormattingEnabled = true;
+            this.dropdown4.Location = new System.Drawing.Point(29, 290);
+            this.dropdown4.Margin = new System.Windows.Forms.Padding(1);
+            this.dropdown4.Name = "dropdown4";
+            this.dropdown4.Size = new System.Drawing.Size(292, 24);
+            this.dropdown4.Sorted = true;
+            this.dropdown4.TabIndex = 27;
+            this.dropdown4.Visible = false;
+            this.dropdown4.SelectedIndexChanged += new System.EventHandler(this.dropdown4_SelectedIndexChanged);
+            // 
+            // dropdown5
+            // 
+            this.dropdown5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dropdown5.FormattingEnabled = true;
+            this.dropdown5.Location = new System.Drawing.Point(29, 316);
+            this.dropdown5.Margin = new System.Windows.Forms.Padding(1);
+            this.dropdown5.Name = "dropdown5";
+            this.dropdown5.Size = new System.Drawing.Size(292, 24);
+            this.dropdown5.Sorted = true;
+            this.dropdown5.TabIndex = 28;
+            this.dropdown5.Visible = false;
+            // 
+            // tooltypes1
+            // 
+            this.tooltypes1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tooltypes1.FormattingEnabled = true;
+            this.tooltypes1.Location = new System.Drawing.Point(481, 212);
+            this.tooltypes1.Margin = new System.Windows.Forms.Padding(1);
+            this.tooltypes1.Name = "tooltypes1";
+            this.tooltypes1.Size = new System.Drawing.Size(292, 24);
+            this.tooltypes1.Sorted = true;
+            this.tooltypes1.TabIndex = 29;
+            this.tooltypes1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
+            // 
             // CoactingGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(961, 679);
+            this.Controls.Add(this.tooltypes1);
+            this.Controls.Add(this.dropdown5);
+            this.Controls.Add(this.dropdown4);
+            this.Controls.Add(this.dropdown3);
+            this.Controls.Add(this.dropdown2);
             this.Controls.Add(this.StrålingAmount);
             this.Controls.Add(this.Tørstråling);
             this.Controls.Add(this.Vådstråling);
@@ -276,7 +349,7 @@
             this.Controls.Add(this.Width);
             this.Controls.Add(this.Length);
             this.Controls.Add(this.Height);
-            this.Controls.Add(this.DropDown);
+            this.Controls.Add(this.dropdown1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(1);
@@ -292,7 +365,7 @@
         #endregion
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ComboBox DropDown;
+        private System.Windows.Forms.ComboBox dropdown1;
         private System.Windows.Forms.TextBox Height;
         private System.Windows.Forms.TextBox Length;
         private System.Windows.Forms.TextBox Width;
@@ -310,6 +383,11 @@
         private System.Windows.Forms.CheckBox Vådstråling;
         private System.Windows.Forms.CheckBox Tørstråling;
         private System.Windows.Forms.NumericUpDown StrålingAmount;
+        private System.Windows.Forms.ComboBox dropdown2;
+        private System.Windows.Forms.ComboBox dropdown3;
+        private System.Windows.Forms.ComboBox dropdown4;
+        private System.Windows.Forms.ComboBox dropdown5;
+        private System.Windows.Forms.ComboBox tooltypes1;
     }
 }
 
