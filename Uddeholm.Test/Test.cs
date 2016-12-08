@@ -240,11 +240,10 @@ namespace Uddeholm.Test
                 Quantity = 1
             };
 
-            Price price = PriceRepository.GetPrice(steel.GetVolume());
-            Coating coating = CoatingRepository.GetCoating("SISTRAL");
-
-            DryTreatment dt = DryTreatmentRepository.GetDryTreatment(steel);
-            WaterTreatment wt = WaterTreatmentRepository.GetWaterTreatment(steel);
+            Price          price   = PriceRepository.GetPrice(steel.GetVolume());
+            Coating        coating = CoatingRepository.GetCoating("SISTRAL");
+            DryTreatment   dt      = DryTreatmentRepository.GetDryTreatment(steel);
+            WaterTreatment wt      = WaterTreatmentRepository.GetWaterTreatment(steel);
 
             Assert.AreEqual(4421.43, steel.GetPrice(coating, price, wt, dt));
         }
