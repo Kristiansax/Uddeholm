@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using Uddeholm.Core.Repositories;
 using Uddeholm.Core.Entites;
 using System.Runtime.Remoting.Contexts;
-
+using System.Media;
+using System.Threading;
 
 namespace Coating_GUI
 {
@@ -20,7 +21,7 @@ namespace Coating_GUI
         public CoatingRepository        CR    = new CoatingRepository();
         public WaterTreatmentRepository WTR   = new WaterTreatmentRepository();
         public DryTreatmentRepository   DTR   = new DryTreatmentRepository();
-        public ToolTypeRepository TTR = new ToolTypeRepository();
+        public ToolTypeRepository       TTR   = new ToolTypeRepository();
         public Steel                    steel;
 
         // Empty values
@@ -33,6 +34,11 @@ namespace Coating_GUI
         public CoactingGUI()
         {
             InitializeComponent();
+
+            treatments.Items.Add(" ");
+            treatments.Items.Add("Efterpolering, simple");
+            treatments.Items.Add("Stripning, HSS Ti, TIAL");
+            treatments.Items.Add("Stripning, HSS CrN, Crosal");
 
             foreach (Coating c in CR.GetAllCoatings())
             {
@@ -153,13 +159,26 @@ namespace Coating_GUI
 
                 totalprice = steel.GetFinalPrice(coatings, watertreatment, drytreatment, tooltypes);
 
+                if (treatments.SelectedItem != null)
+                {
+                    if (treatments.SelectedItem.ToString() == "Stripning, HSS Ti, TIAL")
+                        totalprice += (0.4 * steel.BasePrice);
+
+                    if (treatments.SelectedItem.ToString() == "Stripning, HSS CrN, Crosal")
+                        totalprice += (0.6 * steel.BasePrice);
+
+                    if (treatments.SelectedItem.ToString() == "Efterpolering, simple")
+                        totalprice += (0.02 * steel.BasePrice) + 25;
+                }
+
                 string[] custom = custombox.Text.Split('+');
+
                 foreach (var item in custom)
                 {
                     totalprice += Convert.ToInt32(item);
                 }
 
-                this.Price.Text = Convert.ToString(totalprice);
+                this.Price.Text = Convert.ToString( Math.Round(totalprice, 2) );
 
 
             }
@@ -239,6 +258,35 @@ namespace Coating_GUI
         }
 
         private void comboBox1_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            SystemSounds.Beep.Play();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treatments_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
