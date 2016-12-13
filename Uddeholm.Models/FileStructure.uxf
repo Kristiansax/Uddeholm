@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>240</x>
+      <y>120</y>
+      <w>560</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>Core
+--
+bg=red
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>820</x>
+      <y>300</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Test
+--
+bg=red
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>820</x>
+      <y>120</y>
+      <w>180</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Coating GUI
+--
+bg=red
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>260</x>
+      <y>160</y>
+      <w>500</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Entities
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>380</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>CoatingRepository
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>200</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>DryTreatment
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>260</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Steel
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>200</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Price
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>260</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ToolType
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>260</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>WaterTreatment
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>260</x>
+      <y>340</y>
+      <w>520</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Repositories
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>200</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Coating
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>380</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>DryTreatmentCoatingRepository
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>500</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>PriceRepository
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>440</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>SteelRepository
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>440</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ToolTypeRepository
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>500</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>WaterTreatmentRepository
+bg=blue
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>160</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>CoatingGUI
+bg=green
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>220</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Program
+bg=green
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>340</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Test
+bg=green
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

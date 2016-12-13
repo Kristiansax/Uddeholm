@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>50</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Factor
+--
++Name : String
++Factor : Double
++Type : Enum</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>150</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Price
+--
++ToVolume : Double
++PriceCM3 : Double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>240</y>
+      <w>220</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Treatment
+--
++ToVolume : Double
++QuantityLow : Double
++QuantityMid : Double
++QuantityHigh : Double
++Type : Enum
+--
+&lt;&lt;constructor&gt;&gt; Treatment( Type )
+GetPrice( Int ) : Double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>240</y>
+      <w>260</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Package::Uddeholm.Repositories
+Steel
+--
++Quantity : Int
++BasePrice : Double
++PR : PriceRepository
+--
+&lt;&lt;constructor&gt;&gt; Steel( PriceRepository )
+&lt;&lt;constructor&gt;&gt; Steel
+GetFinalPrice( FullTreatment ) : Double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>30</y>
+      <w>570</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>Entities
+bg=white
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>140</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>430</y>
+      <w>790</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>Repositories
+bg=white
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>600</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Package::ExcelReader
+Package::Uddeholm.Entities
+CoatingRepository 
+--
++Coatings : List&lt;Factor&gt;
+--
+&lt;&lt;constructor&gt;&gt; CoatingRepository
+-Read()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>620</y>
+      <w>200</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Package::ExcelReader
+Package::Uddeholm.Entities
+PriceRepository   
+--
++Price : List&lt;Price&gt;
+--
+&lt;&lt;constructor&gt;&gt; PriceRepository 
+Get( Double ) : Price
+GetAll() : List&lt;Price&gt;
+-Read()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>470</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Package::ExcelReader
+Package::Uddeholm.Entities
+ToolTypeRepository
+--
++Coatings : List&lt;Factor&gt;
+--
+&lt;&lt;constructor&gt;&gt; ToolTypeRepository
+-Read()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>600</y>
+      <w>230</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Package::ExcelReader
+Package::Uddeholm.Entities
+TreatmentRepository
+--
+-Treatments : List&lt;Treatment&gt;
+--
+&lt;&lt;constructor&gt;&gt; TreatmentRepository 
+-Read()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>470</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ITreatmentRepository
+--
+Get( Steel ) : Steel
+GetAll() : List&lt;Treatment&gt;
+GetType( Enum ) : List&lt;Treatment&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>50</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>FullTreatment
+--
++Coatings : List&lt;Factor&gt;
++ToolType : List&lt;Factor&gt;
++Water : Treatment
++Dry : Treatmeant
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>70</y>
+      <w>60</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>40.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>140</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>50</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Volumetric
+--
++IsRound : Bool
++Width : Double
++Length : Double
++Height : Double
+--
+GetVolume() : Double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>160</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>560</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>470</y>
+      <w>230</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+IFactorRepository
+--
+Get( String ) : Factor
+GetAll() : List&lt;Factor&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>540</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>480</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+</diagram>
