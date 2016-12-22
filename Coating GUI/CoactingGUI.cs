@@ -35,7 +35,7 @@ namespace Coating_GUI
         {
             InitializeComponent();
 
-            treatments.Items.Add(" ");
+            treatments.Items.Add("");
             treatments.Items.Add("Efterpolering, simple");
             treatments.Items.Add("Stripning, HSS Ti, TIAL");
             treatments.Items.Add("Stripning, HSS CrN, Crosal");
@@ -109,11 +109,11 @@ namespace Coating_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dropdown1.Items.Add(" ");
-            dropdown2.Items.Add(" ");
-            dropdown3.Items.Add(" ");
-            dropdown4.Items.Add(" ");
-            dropdown5.Items.Add(" ");
+            dropdown1.Items.Add("");
+            dropdown2.Items.Add("");
+            dropdown3.Items.Add("");
+            dropdown4.Items.Add("");
+            dropdown5.Items.Add("");
             steel.Quantity = 1;
         }
 
@@ -135,8 +135,10 @@ namespace Coating_GUI
             {
                 // Coating
                 if (dropdown1.SelectedItem != null)
-                    coatings.Add(CR.GetCoating(dropdown1.SelectedItem.ToString()));
-                if (dropdown2.SelectedItem != null)
+                    if (dropdown1.SelectedItem.ToString() != "")
+                        coatings.Add(CR.GetCoating(dropdown1.SelectedItem.ToString()));
+
+                if (dropdown2.SelectedItem != null && dropdown2.SelectedItem.ToString() != "")
                     coatings.Add(CR.GetCoating(dropdown2.SelectedItem.ToString()));
                 if (dropdown3.SelectedItem != null)
                     coatings.Add(CR.GetCoating(dropdown3.SelectedItem.ToString()));
