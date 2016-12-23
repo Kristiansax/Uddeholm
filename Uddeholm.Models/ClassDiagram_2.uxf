@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>8</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>632</x>
-      <y>32</y>
-      <w>112</w>
-      <h>56</h>
+      <x>1080</x>
+      <y>50</y>
+      <w>140</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Coating
 --
@@ -19,10 +19,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>632</x>
-      <y>104</y>
-      <w>112</w>
-      <h>56</h>
+      <x>1080</x>
+      <y>140</y>
+      <w>140</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Price
 --
@@ -34,10 +34,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>152</x>
-      <y>264</y>
-      <w>144</w>
-      <h>80</h>
+      <x>480</x>
+      <y>340</y>
+      <w>180</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>DryTreatment
 --
@@ -51,10 +51,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>32</y>
-      <w>448</w>
-      <h>200</h>
+      <x>440</x>
+      <y>50</y>
+      <w>560</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>Steel
 --
@@ -78,10 +78,10 @@ GetFinalPrice( List&lt;Coating&gt;, WaterTreatment, DryTreatment, List&lt;ToolTy
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>632</x>
-      <y>176</y>
-      <w>112</w>
-      <h>56</h>
+      <x>1080</x>
+      <y>230</y>
+      <w>140</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>ToolType
 --
@@ -93,10 +93,10 @@ GetFinalPrice( List&lt;Coating&gt;, WaterTreatment, DryTreatment, List&lt;ToolTy
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>384</x>
-      <y>264</y>
-      <w>144</w>
-      <h>80</h>
+      <x>770</x>
+      <y>340</y>
+      <w>180</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>WaterTreatment
 --
@@ -110,10 +110,10 @@ GetFinalPrice( List&lt;Coating&gt;, WaterTreatment, DryTreatment, List&lt;ToolTy
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>104</x>
-      <y>0</y>
-      <w>656</w>
-      <h>360</h>
+      <x>420</x>
+      <y>10</y>
+      <w>820</w>
+      <h>450</h>
     </coordinates>
     <panel_attributes>Entities
 bg=white
@@ -123,10 +123,10 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>224</y>
-      <w>24</w>
-      <h>56</h>
+      <x>560</x>
+      <y>290</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -134,10 +134,10 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>200</y>
-      <w>88</w>
-      <h>24</h>
+      <x>990</x>
+      <y>260</y>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -145,10 +145,10 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>224</y>
-      <w>24</w>
-      <h>56</h>
+      <x>850</x>
+      <y>290</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -156,10 +156,10 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>120</y>
-      <w>88</w>
-      <h>24</h>
+      <x>990</x>
+      <y>160</y>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -167,10 +167,10 @@ layer=-1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>64</y>
-      <w>88</w>
-      <h>24</h>
+      <x>990</x>
+      <y>90</y>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -178,10 +178,10 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>104</x>
-      <y>384</y>
-      <w>704</w>
-      <h>368</h>
+      <x>420</x>
+      <y>480</y>
+      <w>900</w>
+      <h>400</h>
     </coordinates>
     <panel_attributes>Repositories
 bg=white
@@ -191,14 +191,12 @@ layer=-1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>128</x>
-      <y>576</y>
-      <w>176</w>
-      <h>144</h>
+      <x>440</x>
+      <y>680</y>
+      <w>220</w>
+      <h>180</h>
     </coordinates>
-    <panel_attributes>Package::ExcelReader
-Package::Uddeholm.Entities
-CoatingRepository 
+    <panel_attributes>CoatingRepository 
 --
 +Coatings : List&lt;Coating&gt;
 --
@@ -212,14 +210,12 @@ GetAllCoatings() : List&lt;Coating&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>552</x>
-      <y>424</y>
-      <w>240</w>
-      <h>128</h>
+      <x>970</x>
+      <y>680</y>
+      <w>300</w>
+      <h>160</h>
     </coordinates>
-    <panel_attributes>Package::ExcelReader
-Package::Uddeholm.Entities
-DryTreatmentRepository  
+    <panel_attributes>DryTreatmentRepository  
 --
 +DryTreatments : List&lt;DryTreatment&gt;
 --
@@ -233,14 +229,12 @@ GetAllDryTreatments() : List&lt;DryTreatment&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
-      <y>424</y>
-      <w>216</w>
-      <h>136</h>
+      <x>680</x>
+      <y>680</y>
+      <w>270</w>
+      <h>170</h>
     </coordinates>
-    <panel_attributes>Package::ExcelReader
-Package::Uddeholm.Entities
-PriceRepository   
+    <panel_attributes>PriceRepository   
 --
 +Price : List&lt;Price&gt;
 --
@@ -254,33 +248,12 @@ GetAllPrices() : List&lt;Price&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>600</x>
-      <y>576</y>
-      <w>160</w>
-      <h>88</h>
+      <x>440</x>
+      <y>520</y>
+      <w>220</w>
+      <h>140</h>
     </coordinates>
-    <panel_attributes>Package::Uddeholm.Entities
-SteelRepository  
---
-+Steels : List&lt;Steel&gt;
---
-&lt;&lt;constructor&gt;&gt; SteelRepository
-TakeSteel( Steel )
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>128</x>
-      <y>424</y>
-      <w>176</w>
-      <h>136</h>
-    </coordinates>
-    <panel_attributes>Package::ExcelReader
-Package::Uddeholm.Entities
-ToolTypeRepository
+    <panel_attributes>ToolTypeRepository
 --
 +ToolType : List&lt;ToolType&gt;
 --
@@ -294,14 +267,12 @@ GetToolTypes() : List&lt;ToolType&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
-      <y>576</y>
-      <w>264</w>
-      <h>128</h>
+      <x>970</x>
+      <y>520</y>
+      <w>330</w>
+      <h>140</h>
     </coordinates>
-    <panel_attributes>Package::ExcelReader
-Package::Uddeholm.Entities
-WaterTreatmentRepository  
+    <panel_attributes>WaterTreatmentRepository  
 --
 +WaterTreatments : List&lt;WaterTreatment&gt;
 --
@@ -311,5 +282,74 @@ GetWaterTreatment( Steel )
 GetAllWaterTreatments() : List&lt;WaterTreatment&gt;
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>520</y>
+      <w>260</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>ExcelReader
+--
+--
+ReadExcel( String ) : IExcelDataReader</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>930</x>
+      <y>520</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>520</y>
+      <w>50</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>570</y>
+      <w>70</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>570</y>
+      <w>30</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>570</y>
+      <w>90</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>70.0;110.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
