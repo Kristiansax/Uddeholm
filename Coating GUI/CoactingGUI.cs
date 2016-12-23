@@ -134,23 +134,21 @@ namespace Coating_GUI
             try
             {
                 // Coating
-                if (dropdown1.SelectedItem != null)
-                    if (dropdown1.SelectedItem.ToString() != "")
+                if (dropdown1.SelectedItem != null && dropdown1.SelectedItem.ToString() != "")
                         coatings.Add(CR.GetCoating(dropdown1.SelectedItem.ToString()));
-
                 if (dropdown2.SelectedItem != null && dropdown2.SelectedItem.ToString() != "")
-                    coatings.Add(CR.GetCoating(dropdown2.SelectedItem.ToString()));
-                if (dropdown3.SelectedItem != null)
-                    coatings.Add(CR.GetCoating(dropdown3.SelectedItem.ToString()));
-                if (dropdown4.SelectedItem != null)
-                    coatings.Add(CR.GetCoating(dropdown4.SelectedItem.ToString()));
-                if (dropdown5.SelectedItem != null)
-                    coatings.Add(CR.GetCoating(dropdown5.SelectedItem.ToString()));
+                        coatings.Add(CR.GetCoating(dropdown2.SelectedItem.ToString()));
+                if (dropdown3.SelectedItem != null && dropdown3.SelectedItem.ToString() != "")
+                        coatings.Add(CR.GetCoating(dropdown3.SelectedItem.ToString()));
+                if (dropdown4.SelectedItem != null && dropdown4.SelectedItem.ToString() != "")
+                        coatings.Add(CR.GetCoating(dropdown4.SelectedItem.ToString()));
+                if (dropdown5.SelectedItem != null && dropdown5.SelectedItem.ToString() != "")
+                        coatings.Add(CR.GetCoating(dropdown5.SelectedItem.ToString()));
 
                 // Stråling
-                if (Vådstråling.Checked)
+                if (VådstrålingFør.Checked)
                     watertreatment = WTR.GetWaterTreatment(steel);
-                if (Tørstråling.Checked)
+                if (TørstrålingFør.Checked)
                     drytreatment   = DTR.GetDryTreatment(steel);
 
                 // Tool types
@@ -208,8 +206,8 @@ namespace Coating_GUI
             dropdown4.Visible = false;
             dropdown5.Visible = false;
 
-            Vådstråling.Checked = false;
-            Tørstråling.Checked = false;
+            VådstrålingFør.Checked = false;
+            TørstrålingFør.Checked = false;
             StrålingAmount.Value = 1;
 
         }

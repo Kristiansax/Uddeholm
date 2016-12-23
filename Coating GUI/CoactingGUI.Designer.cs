@@ -46,8 +46,8 @@
             this.ClipButton = new System.Windows.Forms.Button();
             this.custombox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Vådstråling = new System.Windows.Forms.CheckBox();
-            this.Tørstråling = new System.Windows.Forms.CheckBox();
+            this.VådstrålingFør = new System.Windows.Forms.CheckBox();
+            this.TørstrålingFør = new System.Windows.Forms.CheckBox();
             this.StrålingAmount = new System.Windows.Forms.NumericUpDown();
             this.dropdown2 = new System.Windows.Forms.ComboBox();
             this.dropdown3 = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.treatments = new System.Windows.Forms.ComboBox();
+            this.TørstrålingEfter = new System.Windows.Forms.CheckBox();
+            this.VådstrålingEfter = new System.Windows.Forms.CheckBox();
+            this.Førbehandling = new System.Windows.Forms.Label();
+            this.Efterbehandling = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.StrålingAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -161,18 +165,18 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // Vådstråling
+            // VådstrålingFør
             // 
-            resources.ApplyResources(this.Vådstråling, "Vådstråling");
-            this.Vådstråling.Name = "Vådstråling";
-            this.Vådstråling.UseVisualStyleBackColor = true;
-            this.Vådstråling.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            resources.ApplyResources(this.VådstrålingFør, "VådstrålingFør");
+            this.VådstrålingFør.Name = "VådstrålingFør";
+            this.VådstrålingFør.UseVisualStyleBackColor = true;
+            this.VådstrålingFør.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // Tørstråling
+            // TørstrålingFør
             // 
-            resources.ApplyResources(this.Tørstråling, "Tørstråling");
-            this.Tørstråling.Name = "Tørstråling";
-            this.Tørstråling.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.TørstrålingFør, "TørstrålingFør");
+            this.TørstrålingFør.Name = "TørstrålingFør";
+            this.TørstrålingFør.UseVisualStyleBackColor = true;
             // 
             // StrålingAmount
             // 
@@ -288,10 +292,36 @@
             this.treatments.Sorted = true;
             this.treatments.SelectedIndexChanged += new System.EventHandler(this.treatments_SelectedIndexChanged);
             // 
+            // TørstrålingEfter
+            // 
+            resources.ApplyResources(this.TørstrålingEfter, "TørstrålingEfter");
+            this.TørstrålingEfter.Name = "TørstrålingEfter";
+            this.TørstrålingEfter.UseVisualStyleBackColor = true;
+            // 
+            // VådstrålingEfter
+            // 
+            resources.ApplyResources(this.VådstrålingEfter, "VådstrålingEfter");
+            this.VådstrålingEfter.Name = "VådstrålingEfter";
+            this.VådstrålingEfter.UseVisualStyleBackColor = true;
+            // 
+            // Førbehandling
+            // 
+            resources.ApplyResources(this.Førbehandling, "Førbehandling");
+            this.Førbehandling.Name = "Førbehandling";
+            // 
+            // Efterbehandling
+            // 
+            resources.ApplyResources(this.Efterbehandling, "Efterbehandling");
+            this.Efterbehandling.Name = "Efterbehandling";
+            // 
             // CoactingGUI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Efterbehandling);
+            this.Controls.Add(this.Førbehandling);
+            this.Controls.Add(this.TørstrålingEfter);
+            this.Controls.Add(this.VådstrålingEfter);
             this.Controls.Add(this.treatments);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -304,8 +334,8 @@
             this.Controls.Add(this.dropdown3);
             this.Controls.Add(this.dropdown2);
             this.Controls.Add(this.StrålingAmount);
-            this.Controls.Add(this.Tørstråling);
-            this.Controls.Add(this.Vådstråling);
+            this.Controls.Add(this.TørstrålingFør);
+            this.Controls.Add(this.VådstrålingFør);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.custombox);
             this.Controls.Add(this.ClipButton);
@@ -349,8 +379,8 @@
         private System.Windows.Forms.Button ClipButton;
         private System.Windows.Forms.TextBox custombox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox Vådstråling;
-        private System.Windows.Forms.CheckBox Tørstråling;
+        private System.Windows.Forms.CheckBox VådstrålingFør;
+        private System.Windows.Forms.CheckBox TørstrålingFør;
         private System.Windows.Forms.NumericUpDown StrålingAmount;
         private System.Windows.Forms.ComboBox dropdown2;
         private System.Windows.Forms.ComboBox dropdown3;
@@ -365,6 +395,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox treatments;
+        private System.Windows.Forms.CheckBox TørstrålingEfter;
+        private System.Windows.Forms.CheckBox VådstrålingEfter;
+        private System.Windows.Forms.Label Førbehandling;
+        private System.Windows.Forms.Label Efterbehandling;
     }
 }
 
