@@ -60,12 +60,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.treatments = new System.Windows.Forms.ComboBox();
             this.TørstrålingEfter = new System.Windows.Forms.CheckBox();
             this.VådstrålingEfter = new System.Windows.Forms.CheckBox();
             this.Førbehandling = new System.Windows.Forms.Label();
             this.Efterbehandling = new System.Windows.Forms.Label();
+            this.efterpolering = new System.Windows.Forms.CheckBox();
+            this.stripning1 = new System.Windows.Forms.CheckBox();
+            this.stripning2 = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.treatments = new System.Windows.Forms.ComboBox();
+            this.screenshot = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.StrålingAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -177,6 +183,7 @@
             resources.ApplyResources(this.TørstrålingFør, "TørstrålingFør");
             this.TørstrålingFør.Name = "TørstrålingFør";
             this.TørstrålingFør.UseVisualStyleBackColor = true;
+            this.TørstrålingFør.CheckedChanged += new System.EventHandler(this.TørstrålingFør_CheckedChanged);
             // 
             // StrålingAmount
             // 
@@ -276,6 +283,48 @@
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
+            // TørstrålingEfter
+            // 
+            resources.ApplyResources(this.TørstrålingEfter, "TørstrålingEfter");
+            this.TørstrålingEfter.Name = "TørstrålingEfter";
+            this.TørstrålingEfter.UseVisualStyleBackColor = true;
+            this.TørstrålingEfter.CheckedChanged += new System.EventHandler(this.TørstrålingEfter_CheckedChanged);
+            // 
+            // VådstrålingEfter
+            // 
+            resources.ApplyResources(this.VådstrålingEfter, "VådstrålingEfter");
+            this.VådstrålingEfter.Name = "VådstrålingEfter";
+            this.VådstrålingEfter.UseVisualStyleBackColor = true;
+            this.VådstrålingEfter.CheckedChanged += new System.EventHandler(this.VådstrålingEfter_CheckedChanged);
+            // 
+            // Førbehandling
+            // 
+            resources.ApplyResources(this.Førbehandling, "Førbehandling");
+            this.Førbehandling.Name = "Førbehandling";
+            // 
+            // Efterbehandling
+            // 
+            resources.ApplyResources(this.Efterbehandling, "Efterbehandling");
+            this.Efterbehandling.Name = "Efterbehandling";
+            // 
+            // efterpolering
+            // 
+            resources.ApplyResources(this.efterpolering, "efterpolering");
+            this.efterpolering.Name = "efterpolering";
+            this.efterpolering.UseVisualStyleBackColor = true;
+            // 
+            // stripning1
+            // 
+            resources.ApplyResources(this.stripning1, "stripning1");
+            this.stripning1.Name = "stripning1";
+            this.stripning1.UseVisualStyleBackColor = true;
+            // 
+            // stripning2
+            // 
+            resources.ApplyResources(this.stripning2, "stripning2");
+            this.stripning2.Name = "stripning2";
+            this.stripning2.UseVisualStyleBackColor = true;
+            // 
             // label8
             // 
             this.label8.AccessibleRole = System.Windows.Forms.AccessibleRole.SpinButton;
@@ -292,32 +341,33 @@
             this.treatments.Sorted = true;
             this.treatments.SelectedIndexChanged += new System.EventHandler(this.treatments_SelectedIndexChanged);
             // 
-            // TørstrålingEfter
+            // screenshot
             // 
-            resources.ApplyResources(this.TørstrålingEfter, "TørstrålingEfter");
-            this.TørstrålingEfter.Name = "TørstrålingEfter";
-            this.TørstrålingEfter.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.screenshot, "screenshot");
+            this.screenshot.Name = "screenshot";
+            this.screenshot.UseVisualStyleBackColor = true;
+            this.screenshot.Click += new System.EventHandler(this.screenshot_Click);
             // 
-            // VådstrålingEfter
+            // richTextBox1
             // 
-            resources.ApplyResources(this.VådstrålingEfter, "VådstrålingEfter");
-            this.VådstrålingEfter.Name = "VådstrålingEfter";
-            this.VådstrålingEfter.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.richTextBox1, "richTextBox1");
+            this.richTextBox1.Name = "richTextBox1";
             // 
-            // Førbehandling
+            // label9
             // 
-            resources.ApplyResources(this.Førbehandling, "Førbehandling");
-            this.Førbehandling.Name = "Førbehandling";
-            // 
-            // Efterbehandling
-            // 
-            resources.ApplyResources(this.Efterbehandling, "Efterbehandling");
-            this.Efterbehandling.Name = "Efterbehandling";
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
             // CoactingGUI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.screenshot);
+            this.Controls.Add(this.stripning2);
+            this.Controls.Add(this.stripning1);
+            this.Controls.Add(this.efterpolering);
             this.Controls.Add(this.Efterbehandling);
             this.Controls.Add(this.Førbehandling);
             this.Controls.Add(this.TørstrålingEfter);
@@ -393,12 +443,18 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox treatments;
         private System.Windows.Forms.CheckBox TørstrålingEfter;
         private System.Windows.Forms.CheckBox VådstrålingEfter;
         private System.Windows.Forms.Label Førbehandling;
         private System.Windows.Forms.Label Efterbehandling;
+        private System.Windows.Forms.CheckBox efterpolering;
+        private System.Windows.Forms.CheckBox stripning1;
+        private System.Windows.Forms.CheckBox stripning2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox treatments;
+        private System.Windows.Forms.Button screenshot;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label9;
     }
 }
 

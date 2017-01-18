@@ -12,5 +12,6 @@ namespace Uddeholm.Core.Entites
         public double QuantityLow { get; set; }
         public double QuantityMid { get; set; }
         public double QuantityHigh { get; set; }
+        public bool AfterTreatment { get; set; }
     }
 }

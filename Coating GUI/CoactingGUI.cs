@@ -12,6 +12,7 @@ using Uddeholm.Core.Entites;
 using System.Runtime.Remoting.Contexts;
 using System.Media;
 using System.Threading;
+using System.IO;
 
 namespace Coating_GUI
 {
@@ -24,11 +25,17 @@ namespace Coating_GUI
         public ToolTypeRepository       TTR   = new ToolTypeRepository();
         public Steel                    steel;
 
+
+
         // Empty values
         List<Coating> coatings;
         List<ToolType> tooltypes;
-        DryTreatment drytreatment;
-        WaterTreatment watertreatment;
+
+        DryTreatment drytreatmentBefore;
+        WaterTreatment watertreatmentBefore;
+
+        DryTreatment drytreatmentAfter;
+        WaterTreatment watertreatmentAfter;
 
 
         public CoactingGUI()
@@ -62,8 +69,12 @@ namespace Coating_GUI
         {
             coatings = new List<Coating>();
             tooltypes = new List<ToolType>();
-            drytreatment = new DryTreatment();
-            watertreatment = new WaterTreatment();
+
+            drytreatmentBefore = new DryTreatment();
+            watertreatmentBefore = new WaterTreatment();
+
+            drytreatmentAfter = new DryTreatment();
+            watertreatmentAfter = new WaterTreatment();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,11 +156,17 @@ namespace Coating_GUI
                 if (dropdown5.SelectedItem != null && dropdown5.SelectedItem.ToString() != "")
                         coatings.Add(CR.GetCoating(dropdown5.SelectedItem.ToString()));
 
-                // Stråling
+                // Stråling before
                 if (VådstrålingFør.Checked)
-                    watertreatment = WTR.GetWaterTreatment(steel);
+                    watertreatmentBefore = WTR.GetWaterTreatment(steel);
                 if (TørstrålingFør.Checked)
-                    drytreatment   = DTR.GetDryTreatment(steel);
+                    drytreatmentBefore   = DTR.GetDryTreatment(steel);
+
+                // Stråling after
+                if (VådstrålingEfter.Checked)
+                    watertreatmentAfter = WTR.GetWaterTreatment(steel);
+                if (TørstrålingEfter.Checked)
+                    drytreatmentAfter = DTR.GetDryTreatment(steel);
 
                 // Tool types
                 if (tooltypes1.SelectedItem != null)
@@ -157,19 +174,22 @@ namespace Coating_GUI
 
                 double totalprice = 0;
 
-                totalprice = steel.GetFinalPrice(coatings, watertreatment, drytreatment, tooltypes);
+                totalprice = steel.GetFinalPrice(
+                    coatings, watertreatmentBefore, drytreatmentBefore, tooltypes, watertreatmentAfter, drytreatmentAfter
+                );
 
-                if (treatments.SelectedItem != null)
-                {
-                    if (treatments.SelectedItem.ToString() == "Stripning, HSS Ti, TIAL")
-                        totalprice += (0.4 * steel.BasePrice);
+                /////////////////////////////////////////////////////////////////////////////////////////////
 
-                    if (treatments.SelectedItem.ToString() == "Stripning, HSS CrN, Crosal")
-                        totalprice += (0.6 * steel.BasePrice);
+                if (stripning1.Checked)
+                    totalprice += (0.6 * steel.BasePrice);
 
-                    if (treatments.SelectedItem.ToString() == "Efterpolering, simple")
-                        totalprice += (0.02 * steel.BasePrice) + 25;
-                }
+                if (stripning2.Checked)
+                    totalprice += (0.4 * steel.BasePrice);
+
+                if (efterpolering.Checked)
+                    totalprice += (0.02 * steel.BasePrice) + 25;
+
+                //////////////////////////////////////////////////////////////////////////////////////////////
 
                 string[] custom = custombox.Text.Split('+');
 
@@ -289,6 +309,47 @@ namespace Coating_GUI
         private void treatments_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        // Våd og tørstråling EFTER
+        private void VådstrålingEfter_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TørstrålingEfter_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TørstrålingFør_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void screenshot_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(
+                1920,
+                1080
+            );
+
+            Graphics graphics = Graphics.FromImage(bitmap as Image);
+            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
+
+            string startupPath = Environment.CurrentDirectory;
+
+            string imagename = DateTime.Now.ToString("yyyy-MM-dd (HH.mm.ss)");
+
+            bitmap.Save(startupPath + @"\Screenshots\" + imagename + ".jpg");
+
+            if (File.Exists(startupPath + @"\Screenshots\" + imagename + ".jpg"))
+            {
+                label9.Visible = true;
+                label9.Text = imagename + ".jpg blev gemt";
+            }
+
+            Thread.Sleep(500);
         }
     }
 }

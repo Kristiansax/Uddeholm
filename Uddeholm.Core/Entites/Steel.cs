@@ -40,7 +40,7 @@ namespace Uddeholm.Core.Entites
                 return result;
         }
 
-        public double GetFinalPrice(List<Coating> c, WaterTreatment wt, DryTreatment dt, List<ToolType> tt)
+        public double GetFinalPrice(List<Coating> c, WaterTreatment wtb, DryTreatment dtb, List<ToolType> tt, WaterTreatment wta, DryTreatment dta)
         {
             bool IsCrosalChosen = false;
 
@@ -56,15 +56,25 @@ namespace Uddeholm.Core.Entites
                     IsCrosalChosen = true;
             }
 
-            // Drytreatment
-            if (dt.ToVolume != 0)
-                price += GetDryTreatmentPrice(dt);
+            /* =============================== Dry og water treatment BEFORE ================================ */
+            if (dtb.ToVolume != 0)
+                price += GetDryTreatmentPrice(dtb);
 
-            // Watertreatment
-            if (wt.ToVolume != 0)
+            if (wtb.ToVolume != 0)
+            {
+                price += GetWaterTreatmentPrice(wtb);
+            }
+
+            /* =============================== Dry og water treatment AFTER ================================ */
+
+            if (dta.ToVolume != 0)
+                price += GetDryTreatmentPrice(dta);
+
+            // Watertreatment BEFORE
+            if (wta.ToVolume != 0)
             {
                 if (!IsCrosalChosen)
-                    price += GetWaterTreatmentPrice(wt);
+                    price += GetWaterTreatmentPrice(wta);
             }
 
             // Tooltypes
