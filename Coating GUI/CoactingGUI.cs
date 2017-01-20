@@ -13,6 +13,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Media;
 using System.Threading;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace Coating_GUI
 {
@@ -329,24 +330,23 @@ namespace Coating_GUI
 
         private void screenshot_Click(object sender, EventArgs e)
         {
-            Bitmap bitmap = new Bitmap(
-                1920,
-                1080
-            );
-
-            Graphics graphics = Graphics.FromImage(bitmap as Image);
-            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
-
+            string imagename = DateTime.Now.ToString("yyyy-MM-dd (HH.mm.ss)");
             string startupPath = Environment.CurrentDirectory;
 
-            string imagename = DateTime.Now.ToString("yyyy-MM-dd (HH.mm.ss)");
+            Rectangle bounds = this.Bounds;
+            using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+            {
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    g.CopyFromScreen(new Point(bounds.Left, bounds.Top), Point.Empty, bounds.Size);
+                }
+                bitmap.Save(startupPath + @"\Screenshots\" + imagename + ".png", ImageFormat.Png);
+            }
 
-            bitmap.Save(startupPath + @"\Screenshots\" + imagename + ".jpg");
-
-            if (File.Exists(startupPath + @"\Screenshots\" + imagename + ".jpg"))
+            if (File.Exists(startupPath + @"\Screenshots\" + imagename + ".png"))
             {
                 label9.Visible = true;
-                label9.Text = imagename + ".jpg blev gemt";
+                label9.Text = imagename + ".png blev gemt";
             }
 
             Thread.Sleep(500);
