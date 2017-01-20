@@ -216,6 +216,8 @@ namespace Coating_GUI
             Length.Clear();
             Price.Clear();
             Volume.Clear();
+            richTextBox1.Clear();
+            tooltypes1.SelectedIndex = 0;
             dropdown1.SelectedIndex = 0;
             dropdown2.SelectedIndex = 0;
             dropdown3.SelectedIndex = 0;
@@ -229,7 +231,16 @@ namespace Coating_GUI
 
             VådstrålingFør.Checked = false;
             TørstrålingFør.Checked = false;
+            VådstrålingEfter.Checked = false;
+            TørstrålingEfter.Checked = false;
+            stripning1.Checked = false;
+            stripning2.Checked = false;
+            efterpolering.Checked = false;
+
             StrålingAmount.Value = 1;
+
+            label9.Visible = false;
+            label9.ResetText();
 
         }
 
@@ -350,6 +361,11 @@ namespace Coating_GUI
             }
 
             Thread.Sleep(500);
+        }
+
+        private void stripning1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

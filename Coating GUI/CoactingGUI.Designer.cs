@@ -318,6 +318,7 @@
             resources.ApplyResources(this.stripning1, "stripning1");
             this.stripning1.Name = "stripning1";
             this.stripning1.UseVisualStyleBackColor = true;
+            this.stripning1.CheckedChanged += new System.EventHandler(this.stripning1_CheckedChanged);
             // 
             // stripning2
             // 
