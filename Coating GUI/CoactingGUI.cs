@@ -132,7 +132,18 @@ namespace Coating_GUI
         private void Calculate_Volume_Click(object sender, EventArgs e)
         {
             if (Height.Text == "")
+            {
                 steel.IsRound = true;
+            }
+            else if(Length.Text == "")
+            {
+                try
+                {
+                    steel.Length = Convert.ToDouble(Height.Text);
+                }
+                catch { }
+                steel.IsRound = true;
+            }
             else
                 steel.IsRound = false;
 
@@ -182,13 +193,13 @@ namespace Coating_GUI
                 /////////////////////////////////////////////////////////////////////////////////////////////
 
                 if (stripning1.Checked)
-                    totalprice += (0.6 * steel.BasePrice);
+                    totalprice += (0.6 * steel.BasePrice * steel.Quantity);
 
                 if (stripning2.Checked)
-                    totalprice += (0.4 * steel.BasePrice);
+                    totalprice += (0.4 * steel.BasePrice * steel.Quantity);
 
                 if (efterpolering.Checked)
-                    totalprice += (0.02 * steel.BasePrice) + 25;
+                    totalprice += ((0.02 * steel.BasePrice) + 25) * steel.Quantity;
 
                 //////////////////////////////////////////////////////////////////////////////////////////////
 
