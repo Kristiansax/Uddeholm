@@ -42,7 +42,7 @@ namespace Uddeholm.Core.Entites
 
         public double GetFinalPrice(List<Coating> c, WaterTreatment wtb, DryTreatment dtb, List<ToolType> tt, WaterTreatment wta, DryTreatment dta)
         {
-            bool IsCrosalChosen = false;
+            //bool IsCrosalChosen = false;
 
             // Price
             double price = 0;
@@ -52,8 +52,8 @@ namespace Uddeholm.Core.Entites
             {
                 price += ((BasePrice * coating.factor) * Quantity);
 
-                if (coating.name.Contains("CROSAL"))
-                    IsCrosalChosen = true;
+                //if (coating.name.Contains("CROSAL"))
+                //    IsCrosalChosen = true;
             }
 
             /* =============================== Dry og water treatment BEFORE ================================ */
@@ -73,7 +73,7 @@ namespace Uddeholm.Core.Entites
             // Watertreatment BEFORE
             if (wta.ToVolume != 0)
             {
-                if (!IsCrosalChosen)
+                //if (!IsCrosalChosen)
                     price += GetWaterTreatmentPrice(wta);
             }
 

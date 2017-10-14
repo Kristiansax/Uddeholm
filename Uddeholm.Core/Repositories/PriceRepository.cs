@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Uddeholm.Core;
 using Uddeholm.Core.Entites;
-using Excel;
+using ExcelDataReader;
 
 namespace Uddeholm.Core.Repositories
 {
@@ -20,7 +20,7 @@ namespace Uddeholm.Core.Repositories
             string startupPath = Environment.CurrentDirectory;
             IExcelDataReader excelReader = ReadExcel(@startupPath+@"\PVD.xlsx");
 
-            excelReader.IsFirstRowAsColumnNames = true;
+            //excelReader.IsFirstRowAsColumnNames = true;
             excelReader.Read();
             while (excelReader.Read())
             {

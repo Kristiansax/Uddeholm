@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Uddeholm.Core.Entites;
-using Excel;
+using ExcelDataReader;
 
 namespace Uddeholm.Core.Repositories
 {

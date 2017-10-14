@@ -193,7 +193,7 @@ namespace Coating_GUI
                 /////////////////////////////////////////////////////////////////////////////////////////////
 
                 if (stripning1.Checked)
-                    totalprice += (0.6 * steel.BasePrice * steel.Quantity);
+                    totalprice += (0.4 * steel.BasePrice * steel.Quantity);
 
                 if (stripning2.Checked)
                     totalprice += (0.4 * steel.BasePrice * steel.Quantity);

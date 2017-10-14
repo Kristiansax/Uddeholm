@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Uddeholm.Core;
 using Uddeholm.Core.Entites;
-using Excel;
+using ExcelDataReader;
 
 namespace Uddeholm.Core.Repositories
 {
